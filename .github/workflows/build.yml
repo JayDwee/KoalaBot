@@ -28,7 +28,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push release
-        if: ${{ github.event_name == 'release' && github.event.action == "released" }}
+        if: ${{ github.event_name == 'release' && github.event.action == 'released' }}
         uses: docker/build-push-action@v2
         with:
           context: .
@@ -37,7 +37,7 @@ jobs:
             jaydwee/koalabot-test:latest
             jaydwee/koalabot-test:${{ steps.get_version.outputs.VERSION }}
       - name: Build and push prerelease
-        if: ${{ github.event_name == 'release' && github.event.action == "prereleased" }}
+        if: ${{ github.event_name == 'release' && github.event.action == 'prereleased' }}
         uses: docker/build-push-action@v2
         with:
           context: .
