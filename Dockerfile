@@ -44,8 +44,9 @@ RUN apt-get install -y sqlcipher libsqlcipher-dev
 #   rm -r /app/KoalaBot-${KOALA_VER}
 
 COPY . /app
-
 WORKDIR /app
+
+RUN python3 -m venv /opt/venv
 
 RUN /opt/venv/bin/python -m pip install --upgrade pip
 RUN /opt/venv/bin/pip install -r requirements.txt
