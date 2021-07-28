@@ -22,26 +22,28 @@ RUN \
     python3-venv
 RUN apt-get install -y sqlcipher libsqlcipher-dev
 
-RUN \
-  if [ -z ${KOALA_RELEASE+x} ]; then \
-	KOALA_RELEASE=$(curl -sX GET "https://api.github.com/repos/KoalaBotUK/KoalaBot/releases/latest" \
-	| jq -r .tag_name); \
-  fi && \
-  KOALA_VER=${KOALA_RELEASE#v} && \
-  echo "KoalaBot Version "$KOALA_VER && \
-  curl -o \
-  /tmp/KoalaBot.zip -L \
-    "https://github.com/KoalaBotUK/KoalaBot/archive/v${KOALA_VER}.zip" && \
-  mkdir -p /app && \
-  unzip /tmp/KoalaBot.zip -d /app && \
-  echo "**** cleanup ****" && \
-    rm -rf \
-	/tmp/* \
-	/var/tmp/* && \
-  ls && \
-  python3 -m venv /opt/venv && \
-  mv /app/KoalaBot-${KOALA_VER}/* /app && \
-  rm -r /app/KoalaBot-${KOALA_VER}
+# RUN \
+#   if [ -z ${KOALA_RELEASE+x} ]; then \
+# 	KOALA_RELEASE=$(curl -sX GET "https://api.github.com/repos/KoalaBotUK/KoalaBot/releases/latest" \
+# 	| jq -r .tag_name); \
+#   fi && \
+#   KOALA_VER=${KOALA_RELEASE#v} && \
+#   echo "KoalaBot Version "$KOALA_VER && \
+#   curl -o \
+#   /tmp/KoalaBot.zip -L \
+#     "https://github.com/KoalaBotUK/KoalaBot/archive/v${KOALA_VER}.zip" && \
+#   mkdir -p /app && \
+#   unzip /tmp/KoalaBot.zip -d /app && \
+#   echo "**** cleanup ****" && \
+#     rm -rf \
+# 	/tmp/* \
+# 	/var/tmp/* && \
+#   ls && \
+#   python3 -m venv /opt/venv && \
+#   mv /app/KoalaBot-${KOALA_VER}/* /app && \
+#   rm -r /app/KoalaBot-${KOALA_VER}
+
+COPY . /app
 
 WORKDIR /app
 
