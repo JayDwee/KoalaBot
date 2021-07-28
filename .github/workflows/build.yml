@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          repository: KoalaBotUK/KoalaBot
       - name: Get the version
         if: ${{ github.event_name == 'release' }}
         id: get_version
