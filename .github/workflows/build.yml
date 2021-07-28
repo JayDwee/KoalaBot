@@ -36,7 +36,7 @@ jobs:
           tags: |
             jaydwee/koalabot-test:latest
             jaydwee/koalabot-test:${{ steps.get_version.outputs.VERSION }}
-      - name: Build and push release
+      - name: Build and push prerelease
         if: ${{ github.event_name == 'prerelease' }}
         uses: docker/build-push-action@v2
         with:
