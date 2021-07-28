@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: KoalaBotUK/docker-KoalBot
+          repository: KoalaBotUK/docker-KoalaBot
       - name: Get the version
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
@@ -33,8 +33,8 @@ jobs:
           context: .
           push: true
           tags: |
-            - jaydwee/koalabot:latest
-            - jaydwee/koalabot:${{ steps.get_version.outputs.VERSION }}
+            - jaydwee/koalabot-test:latest
+            - jaydwee/koalabot-test:${{ steps.get_version.outputs.VERSION }}
       - name: Build and push release
         if: ${{ github.event_name == 'prerelease' }}
         uses: docker/build-push-action@v2
@@ -42,5 +42,5 @@ jobs:
           context: .
           push: true
           tags: |
-            - jaydwee/koalabot:prerelease
-            - jaydwee/koalabot:${{ steps.get_version.outputs.VERSION }}
+            - jaydwee/koalabot-test:prerelease
+            - jaydwee/koalabot-test:${{ steps.get_version.outputs.VERSION }}
