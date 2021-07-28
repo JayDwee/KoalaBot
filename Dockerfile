@@ -16,7 +16,8 @@ RUN \
     unzip \
     python3 \
     python3-pip \
-    python3-venv
+    python3-venv \
+    sqlite3
 RUN apt-get install -y sqlcipher libsqlcipher-dev
 
 COPY . /app
