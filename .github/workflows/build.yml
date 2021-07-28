@@ -33,8 +33,8 @@ jobs:
           context: .
           push: true
           tags: |
-            - jaydwee/koalabot-test:latest
-            - jaydwee/koalabot-test:${{ steps.get_version.outputs.VERSION }}
+            jaydwee/koalabot-test:latest
+            jaydwee/koalabot-test:${{ steps.get_version.outputs.VERSION }}
       - name: Build and push release
         if: ${{ github.event_name == 'prerelease' }}
         uses: docker/build-push-action@v2
@@ -42,5 +42,5 @@ jobs:
           context: .
           push: true
           tags: |
-            - jaydwee/koalabot-test:prerelease
-            - jaydwee/koalabot-test:${{ steps.get_version.outputs.VERSION }}
+            jaydwee/koalabot-test:prerelease
+            jaydwee/koalabot-test:${{ steps.get_version.outputs.VERSION }}
