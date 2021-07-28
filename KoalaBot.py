@@ -125,7 +125,7 @@ def load_all_cogs():
     """
     Loads all cogs in COGS_DIR into the client
     """
-    UNRELEASED = []
+    UNRELEASED = ["Announce.py"]
 
     for filename in os.listdir(COGS_DIR):
         if filename.endswith('.py') and filename not in UNRELEASED:
